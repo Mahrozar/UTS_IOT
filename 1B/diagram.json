@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "author": "Alamsyah Putra Mahrozar Pohan",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -166.2, "left": -102.8, "attrs": {} },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -163.2,
+      "left": -263.96,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -272.4,
+      "left": -53.8,
+      "attrs": { "color": "green" }
+    },
+    { "type": "wokwi-led", "id": "led2", "top": -272.4, "left": 71, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -272.4,
+      "left": 3.8,
+      "attrs": { "color": "yellow" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": -153.4, "left": 288, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -306.9, "left": 148.2, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -295.2,
+      "left": -151.8,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.2", "bb1:tn.1", "black", [ "v0" ] ],
+    [ "esp:3V3", "bb1:tp.1", "green", [ "h0" ] ],
+    [ "bz1:1", "bb1:tn.2", "green", [ "v0" ] ],
+    [ "led1:C", "bb1:tn.4", "green", [ "v0" ] ],
+    [ "led3:C", "bb1:tn.9", "green", [ "v0" ] ],
+    [ "led2:C", "bb1:tn.15", "green", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:tp.21", "red", [ "v0" ] ],
+    [ "dht1:GND", "bb1:tn.24", "black", [ "v0" ] ],
+    [ "relay1:VCC", "bb1:tp.25", "red", [ "h-86.4", "v-19.2" ] ],
+    [ "relay1:GND", "bb1:tn.23", "black", [ "h-105.6", "v-10" ] ],
+    [ "bz1:2", "esp:33", "green", [ "v86.4", "h-115.6" ] ],
+    [ "led1:A", "esp:13", "green", [ "v0" ] ],
+    [ "led3:A", "esp:14", "green", [ "v0" ] ],
+    [ "led2:A", "esp:12", "green", [ "v0" ] ],
+    [ "esp:15", "dht1:SDA", "green", [ "v-182.4", "h288" ] ],
+    [ "esp:32", "relay1:IN", "green", [ "h384.15", "v-115.2" ] ]
+  ],
+  "dependencies": {}
+}
